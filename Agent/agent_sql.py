@@ -13,19 +13,9 @@ from langchain.prompts import ChatPromptTemplate
 from langchain_community.callbacks.manager import get_openai_callback
 import time
 from openai import RateLimitError
+from dbSqlServer.db import connection_string
 
 _ = load_dotenv(find_dotenv())
-
-odbc_str = (
-    f"DRIVER={os.getenv('ODBC_DRIVER')};"
-    f"SERVER={os.getenv('SERVER_DB')};"
-    f"DATABASE={os.getenv('DATABASE')};"
-    f"UID={os.getenv('USER_DB')};"
-    f"PWD={os.getenv('PASS_DB')};"
-    f"TrustServerCertificate=yes;"
-)
-quoted = quote_plus(odbc_str)
-connection_string = f"mssql+pyodbc:///?odbc_connect={quoted}"
 
 db = SQLDatabase.from_uri(
     connection_string,

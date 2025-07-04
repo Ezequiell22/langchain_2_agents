@@ -9,7 +9,6 @@ class Tabela(Base):
     id = Column(Integer, primary_key=True)
     codigo = Column(String, unique=True, nullable=False)
     descricao = Column(Text, nullable=False)
-    sinonimos = Column(Text)
 
     colunas = relationship("Coluna", back_populates="tabela", cascade="all, delete-orphan")
 
@@ -19,7 +18,6 @@ class Coluna(Base):
 
     id = Column(Integer, primary_key=True)
     tabela_id = Column(Integer, ForeignKey('tabela.id'), nullable=False)
-    nome_legivel = Column(String, nullable=True)
     codigo_coluna = Column(String, nullable=False)
     descricao = Column(String, nullable=False)
 
