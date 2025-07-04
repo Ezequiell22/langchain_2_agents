@@ -1,0 +1,6 @@
+.env
+__pycache__/
+testeup.py
+schemas_tabelas.json
+dicionario.db
+venv/
